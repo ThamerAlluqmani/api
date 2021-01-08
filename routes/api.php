@@ -26,5 +26,5 @@ Route::post('login' , 'App\Http\Controllers\API\AuthController@login');
 Route::middleware('auth:api')->prefix('user')->group(function (){
 
     Route::post('update/password' ,'App\Http\Controllers\API\UserController@updatePassword' );
-//    Route::post('update/profile' ,'App\Http\Controllers\API\UserController@update' );
+    Route::post('update/account' ,'App\Http\Controllers\API\UserController@updateAccount' );
 });

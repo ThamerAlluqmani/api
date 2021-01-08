@@ -28,11 +28,38 @@ class UserController extends Controller
         ]);
 
         $user->password = bcrypt($rules['new_password']);
-       if ( $user->save() ){
-           return ['message' => 'Password updated successfully'];
-       };
-        return response()->json(['message' => 'There is an error , please try again later'] , 500);
+        if ($user->save()) {
+            return ['message' => 'Password updated successfully'];
+        }
+
+        return response()->json(['message' => 'There is an error , please try again later'], 500);
+    }
 
 
+
+
+    public function updateAccount(Request $request)
+    {
+
+        $user = auth()->user();
+        if (!Hash::check($request->password, $user->password)) {
+
+            return response()->json([
+                'message' => 'Your password current password is invalid'
+            ], 401);
+        }
+
+
+        $rules = $request->validate([
+            'email' => 'required|unique:users,email,'.auth()->id(),
+            'name' => 'required'
+        ]);
+
+
+        if ($user->update($rules)) {
+            return ['message' => 'Account updated successfully'];
+        }
+
+        return response()->json(['message' => 'There is an error , please try again later'], 500);
     }
 }
