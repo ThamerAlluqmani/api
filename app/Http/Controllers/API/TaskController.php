@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TaskResource;
 use App\Models\Category;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -23,9 +24,8 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         //
-        $category = Category::findOrFail($request->category_id);
-
-        return $category;
+        $tasks = auth()->user()->tasks()->with('category')->paginate(100);
+        return  TaskResource::collection($tasks);
 
     }
 
@@ -77,6 +77,13 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         //
+
+        if (auth()->id() != $task->user_id) {
+            return response()->json(['message' => 'Error , permission denied'], 401);
+        }
+
+        $task->load('category');
+        return new TaskResource($task);
     }
 
     /**

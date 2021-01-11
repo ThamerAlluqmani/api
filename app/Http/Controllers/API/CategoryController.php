@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return auth()->user()->categories;
+
+        $categories = auth()->user()->categories()->with('tasks')->paginate(100);
+        return  CategoryResource::collection($categories);
     }
 
     /**
@@ -66,7 +69,13 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
+        if (auth()->id() != $category->user_id) {
+            return response()->json(['message' => 'Error , permission denied'], 401);
+        }
+
+        $category->load('tasks');
+        return new CategoryResource($category);
     }
 
     /**
