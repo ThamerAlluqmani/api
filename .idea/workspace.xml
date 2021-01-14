@@ -23,12 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5019ac98-d119-4566-9570-51d3283f3f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/TaskResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/CategoryFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/CategoryTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,6 +201,7 @@
       <workItem from="1610171196976" duration="7770000" />
       <workItem from="1610261053907" duration="5144000" />
       <workItem from="1610346197248" duration="3173000" />
+      <workItem from="1610608572139" duration="3128000" />
     </task>
     <servers />
   </component>
