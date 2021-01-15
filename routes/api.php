@@ -37,3 +37,7 @@ Route::delete('categories/{categoryId}/force-delete' ,'App\Http\Controllers\API\
 Route::resource('tasks' ,'App\Http\Controllers\API\TaskController');
 Route::put('tasks/{taskId}/restore' ,'App\Http\Controllers\API\TaskController@restore' );
 Route::delete('tasks/{taskId}/force-delete' ,'App\Http\Controllers\API\TaskController@forceDelete' );
+
+
+
+Route::resource('comments' ,'App\Http\Controllers\API\CommentController');

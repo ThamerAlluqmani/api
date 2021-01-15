@@ -18,7 +18,8 @@ class CategoryResource extends JsonResource
            'id' => $this->id,
            'title' => $this->title,
            'description' => $this->description,
-           'tasks' => TaskResource::collection($this->whenLoaded('tasks'))
+           'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
+           'comments' => CommentResource::collection($this->whenLoaded('comments')),
        ];
     }
 }

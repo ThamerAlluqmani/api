@@ -82,7 +82,7 @@ class TaskController extends Controller
             return response()->json(['message' => 'Error , permission denied'], 401);
         }
 
-        $task->load('category');
+        $task->load('category' , 'comments');
         return new TaskResource($task);
     }
 

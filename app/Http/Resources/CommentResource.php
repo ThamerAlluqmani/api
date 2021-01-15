@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TaskResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,10 @@ class TaskResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
+            'body' => $this->body,
             'created_at' => $this->created_at,
-            'due_date' => $this->due_date,
-            'category'=> new CategoryResource($this->whenLoaded('category')),
-            'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'task'=> new TaskResource($this->whenLoaded('task')),
+            'category'=> new CategoryResource($this->whenLoaded('category'))
         ];
     }
 }
