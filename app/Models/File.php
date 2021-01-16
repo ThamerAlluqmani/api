@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
@@ -12,7 +13,9 @@ class File extends Model
         'user_id',
         'task_id',
         'name',
-
+    ];
+    protected $appends = [
+        'file_url'
     ];
 
     public function user(){
@@ -20,5 +23,10 @@ class File extends Model
     }
     public function task(){
         return $this->belongsTo(Task::class);
+    }
+
+    public function getFileUrlAttribute()
+    {
+        return config('app.url').Storage::url('tasks/'.$this->task_id.'/'.$this->name);
     }
 }

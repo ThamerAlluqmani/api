@@ -22,6 +22,7 @@ class TaskResource extends JsonResource
             'due_date' => $this->due_date,
             'category'=> new CategoryResource($this->whenLoaded('category')),
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'files' => FileResource::collection($this->whenLoaded('files')),
         ];
     }
 }

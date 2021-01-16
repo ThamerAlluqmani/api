@@ -7,6 +7,7 @@ use App\Http\Resources\TaskResource;
 use App\Models\Category;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -82,7 +83,7 @@ class TaskController extends Controller
             return response()->json(['message' => 'Error , permission denied'], 401);
         }
 
-        $task->load('category' , 'comments');
+        $task->load('category' , 'comments' , 'files');
         return new TaskResource($task);
     }
 
@@ -176,6 +177,7 @@ class TaskController extends Controller
         }
 
         if ($deletedTask->forceDelete()){
+            Storage::deleteDirectory('public/tasks/'.$deletedTask->id);
             return ['message' => 'Task Deleted successfully'];
         }
 

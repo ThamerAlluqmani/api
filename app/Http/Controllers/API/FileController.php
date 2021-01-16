@@ -3,84 +3,71 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FileResource;
 use App\Models\File;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth:api');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function upload(Request $request , $taskId){
+
+        $task = Task::findOrFail($request->task_id);
+
+        if (auth()->id() != $task->user_id) {
+            return response()->json(['message' => 'Error , permission denied'], 401);
+        }
+
+        $rules = $request->validate([
+            'file' => 'required|max:9000|mimes:jpe,jpeg,pdf,png'
+        ]);
+
+        $fileName = $request->file('file')->hashName();
+        $uploaded = $request->file('file')->storeAs('public/tasks/'.$task->id , $fileName);
+        if ($uploaded){
+
+            $fileData = [
+                'user_id'=> auth()->id(),
+                'name' => $fileName
+
+            ];
+
+            $saveFile = $task->files()->create($fileData);
+
+            if ($saveFile){
+                return new FileResource($saveFile);
+            }
+
+        }
+
+
+        return response()->json(['message' => 'There is an error , please try again later'], 500);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
-     */
-    public function show(File $file)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(File $file)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, File $file)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(File $file)
     {
-        //
+
+        if (auth()->id() != $file->user_id) {
+            return response()->json(['message' => 'Error , permission denied'], 401);
+        }
+
+        if ($file->delete()){
+           $deleted = Storage::delete('public/tasks/'.$file->task_id.'/'.$file->name);
+           if ($deleted){
+               return ['message' => 'File deleted successfully'];
+           }
+        }
+
+        return response()->json(['message' => 'There is an error , please try again later'], 500);
+
+
+
     }
+
 }
