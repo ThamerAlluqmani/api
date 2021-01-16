@@ -31,4 +31,10 @@ class Category extends Model
         return $this->hasManyThrough(Comment::class , Task::class);
 
     }
+
+    public function files(){
+
+        return $this->hasManyThrough(File::class , Task::class);
+
+    }
 }

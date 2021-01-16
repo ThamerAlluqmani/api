@@ -23,18 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5019ac98-d119-4566-9570-51d3283f3f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CommentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CommentResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/FileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/TaskResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/TaskResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/File.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_07_040032_create_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_07_040032_create_comments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_07_040022_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_07_040022_create_files_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +207,9 @@
       <workItem from="1610261053907" duration="5144000" />
       <workItem from="1610346197248" duration="3173000" />
       <workItem from="1610608572139" duration="3128000" />
-      <workItem from="1610696215022" duration="3008000" />
+      <workItem from="1610696215022" duration="3077000" />
+      <workItem from="1610732427852" duration="164000" />
+      <workItem from="1610783013153" duration="751000" />
     </task>
     <servers />
   </component>
@@ -255,17 +252,17 @@
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
     <state width="1234" height="282" key="GridCell.Tab.0.right/0.0.2560.1050@0.0.2560.1050" timestamp="1610010919360" />
-    <state x="149" y="169" key="SettingsEditor" timestamp="1610696330793">
+    <state x="149" y="169" key="SettingsEditor" timestamp="1610783133032">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
-    <state x="149" y="169" key="SettingsEditor/0.0.2560.1050@0.0.2560.1050" timestamp="1610696330793" />
+    <state x="149" y="169" key="SettingsEditor/0.0.2560.1050@0.0.2560.1050" timestamp="1610783133032" />
     <state x="465" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610185731954">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
     <state x="465" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1050@0.0.2560.1050" timestamp="1610185731954" />
-    <state x="303" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1610699157815">
+    <state x="303" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1610783762526">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
-    <state x="303" y="233" width="672" height="678" key="search.everywhere.popup/0.0.2560.1050@0.0.2560.1050" timestamp="1610699157815" />
+    <state x="303" y="233" width="672" height="678" key="search.everywhere.popup/0.0.2560.1050@0.0.2560.1050" timestamp="1610783762526" />
   </component>
 </project>
